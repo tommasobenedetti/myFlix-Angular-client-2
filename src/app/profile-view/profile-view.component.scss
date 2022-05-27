@@ -1,0 +1,36 @@
+.profile-div {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    flex-wrap: wrap;   
+};
+
+
+.watchlist-div {
+    justify-content: center;
+    width: 100%;
+    min-width:min-content;
+    background-color: #f3f0ed;
+    color: #86705b;
+    display: flex;
+    gap: 10px;
+};
+
+.details-card {
+width: 400px;
+};
+
+.details-div {
+    text-align: center;
+    width: 400px;
+    margin-bottom: 10%;
+    margin-top: 10%;
+}
+
+.mat-card-title {
+    color: #86705b;
+  }
+
+.details-card {
+    background-color: #f3f0ed
+}

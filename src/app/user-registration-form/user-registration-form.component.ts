@@ -1,3 +1,11 @@
+/**
+ * Renders a registration form for users to make a new account.  
+ * The user must supply a valid Username, Password, Email, and 
+ * (optional) Birthday.
+ * 
+ * @module UserRegistrationFormComponent
+ */
+
 import { Component, OnInit, Input } from '@angular/core';
 //to close the dialog on success
 import { MatDialogRef } from '@angular/material/dialog';
@@ -16,6 +24,11 @@ import { MatDialog } from '@angular/material/dialog';
 
 export class UserRegistrationFormComponent implements OnInit {
 
+  /**
+     * The input userData is empty strings by default.
+     * This is updated when the suer types into the form fields.
+     */
+
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
 
@@ -29,6 +42,13 @@ export class UserRegistrationFormComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  /**
+     * Attempts to register the user with teh input credentials.  
+     * Upon sucessful registration, the user can then log in.  
+     * If registration fails, the user sees a snackbar dialog 
+     * warning them that the credentials are invalid.
+     */
 
   // function is sending the form input to the backend
   registerUser(): void {
@@ -53,5 +73,4 @@ export class UserRegistrationFormComponent implements OnInit {
       width: '320px'
     });
   }
-
 }

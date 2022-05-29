@@ -1,3 +1,9 @@
+/**
+ * Renders a login form for users to enter their Username and Password.
+ * 
+ * @module UserLoginFormComponent
+ */
+
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FetchApiDataService } from '../fetch-api-data.service';
@@ -10,6 +16,11 @@ import { Router } from '@angular/router';
     styleUrls: ['./user-login-form.component.scss']
 })
 export class UserLoginFormComponent implements OnInit {
+
+    /**
+       * The input userData is empty strings by default.  
+       * This is updated when the user types into the form fields.
+       */
 
     @Input() userCredentials = { Username: '', Password: '' };
 

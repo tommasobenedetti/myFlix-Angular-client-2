@@ -31,8 +31,7 @@ export class MovieCardComponent implements OnInit {
 
   movies: any = [];
   Favorites: any[] = [];
-  user: any[] = [];
-
+  user: any = {};
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -61,8 +60,8 @@ export class MovieCardComponent implements OnInit {
 
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
+      this.user = JSON.parse(localStorage.getItem('user') || '{}');
       this.movies = resp;
-      console.log(this.movies);
       return this.movies;
     });
   }
@@ -73,8 +72,7 @@ export class MovieCardComponent implements OnInit {
      */
 
   getFavoriteMovies(): void {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    this.fetchApiData.getUser(user).subscribe((resp: any) => {
+    this.fetchApiData.getUser(this.user.Username).subscribe((resp: any) => {
       this.Favorites = resp.FavoriteMovies;
       console.log(this.Favorites);
     });
@@ -146,7 +144,7 @@ export class MovieCardComponent implements OnInit {
      */
 
   addFavoriteMovie(MovieID: string, title: string): void {
-    this.fetchApiData.addFavoriteMovie(MovieID, this.user).subscribe((resp: any) => {
+    this.fetchApiData.addFavoriteMovie(this.user.Username, MovieID).subscribe((resp: any) => {
       this.snackBar.open(`${title} has been added to your Watchlist!`, 'OK', {
         duration: 4000,
       });
@@ -166,7 +164,7 @@ export class MovieCardComponent implements OnInit {
      */
 
   removeFavoriteMovie(MovieId: string, title: string): void {
-    this.fetchApiData.deleteFavMovie(MovieId, this.user).subscribe((resp: any) => {
+    this.fetchApiData.deleteFavMovie(this.user.Username, MovieId).subscribe((resp: any) => {
       console.log(resp);
       this.snackBar.open(
         `${title} has been removed from your Watchlist!`,
@@ -181,7 +179,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   isFavorite(MovieID: string): boolean {
-    return this.Favorites.some((movie) => movie._id === MovieID);
+    return this.Favorites.some((id) => id === MovieID);
   }
 
   /**

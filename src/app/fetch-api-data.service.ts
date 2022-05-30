@@ -92,7 +92,7 @@ export class FetchApiDataService {
   // Making the API call for getting user's information
   getUser(username: string): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + 'users/' + username, {
+    return this.http.put(apiUrl + 'users/' + username, {}, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -103,24 +103,11 @@ export class FetchApiDataService {
     );
   }
 
-  // Making the API call for user's watchlist
-  getFavoriteMovies(username: any): Observable<any> {
-    const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + 'users/' + username + '/movies', {
-      headers: new HttpHeaders(
-        {
-          Authorization: 'Bearer ' + token,
-        })
-    }).pipe(
-      map(this.extractResponseData),
-      catchError(this.handleError)
-    );
-  }
 
   // Making the API call for adding movies to profile
   addFavoriteMovie(username: string, movieId: any): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.post(apiUrl + 'users/' + username + '/movies/' + movieId, movieId, {
+    return this.http.post(apiUrl + 'users/' + username + '/' + movieId, {}, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -131,10 +118,10 @@ export class FetchApiDataService {
     );
   }
 
-  // Making the API call for deleting a movie from user's Watchlist
+  // Making the API call for deleting a movie from user's Favorite movies list
   deleteFavMovie(username: string, movieId: any): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.delete(apiUrl + 'users/' + username + '/movies/' + movieId, {
+    return this.http.delete(apiUrl + 'users/' + username + '/FavoriteMovies/' + movieId, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,

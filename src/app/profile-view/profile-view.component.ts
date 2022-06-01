@@ -75,8 +75,8 @@ export class ProfileViewComponent implements OnInit {
   getCurrentUser(currentUser: string): void {
     this.fetchApiData.getUser(currentUser).subscribe((resp: any) => {
       this.currentUser = resp;
-      this.currentFavs = this.currentUser.Favorites;
-      //this.areFavsEmpty();
+      this.currentFavs = this.currentUser.FavoriteMovies;
+      this.areFavsEmpty();
       return this.currentUser;
     });
   }
@@ -85,14 +85,14 @@ export class ProfileViewComponent implements OnInit {
      * What doesn't show when a user doesn't have favorite movies yet
      */
 
-  /**areFavsEmpty(): any {
+  areFavsEmpty(): any {
     if (this.currentFavs.length == 0) {
       this.favsEmpty = true;
     } else {
       this.favsEmpty = false;
     }
     return this.favsEmpty;
-  }*/
+  }
 
   /**
    * How a user deletes the favorites

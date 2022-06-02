@@ -31,7 +31,7 @@ export class MovieCardComponent implements OnInit {
 
   movies: any = [];
   Favorites: any[] = [];
-  user: any = {};
+  user = JSON.parse(localStorage.getItem('user') || '{}');
 
   constructor(
     public fetchApiData: FetchApiDataService,

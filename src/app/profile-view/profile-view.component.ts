@@ -123,7 +123,7 @@ export class ProfileViewComponent implements OnInit {
       this.snackBar.open("Profile updated", "OK", {
         duration: 4000
       });
-      localStorage.setItem('user', resp.Username)
+      localStorage.setItem('user', JSON.stringify(resp))
       this.getCurrentUser(this.currentUser.Username)
     }, (resp: any) => {
       this.snackBar.open("Failed to update", "OK", {

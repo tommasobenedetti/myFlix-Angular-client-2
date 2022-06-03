@@ -4,12 +4,12 @@
 </header>
 
 <div class="profile-div">
-    <div class="watchlist-div">
-        <h2>Favorite Movies</h2>
+    <mat-card class="watchlist-div" style="flex-direction:column; align-items: center">
+        <mat-card-title>Favorite Movies</mat-card-title>
         <ul *ngFor="let title of currentFavs;">
             <li>{{title}}</li>
         </ul>
-    </div>
+    </mat-card>
     <div>
         <div class="details-div" style="margin-left: 15px;">
             <h2 style="color:#86705b">Current Details</h2>

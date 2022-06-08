@@ -31,7 +31,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 # Check online version
 [myFlix](https://tommasobenedetti.github.io/myFlix-Angular-client-2/).
-end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
 # Further help
 

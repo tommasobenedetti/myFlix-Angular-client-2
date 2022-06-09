@@ -1,6 +1,5 @@
 /**
- * Renders a form for users to update their account information and 
- * an array of movie cards corresponding to their favorite movies.  
+ * Renders a form for users to update their account information.  
  * 
  * Also renders a BannerComponent.
  * 
